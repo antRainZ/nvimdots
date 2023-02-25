@@ -37,11 +37,13 @@ settings["background"] = "dark"
 -- https://github.com/neovim/nvim-lspconfig/tree/master/lua/lspconfig/server_configurations
 settings["lsp"] = {
 	"bashls",
+	-- c/c++
 	"clangd",
-	"gopls",
+	-- "gopls",
 	"html",
 	"jsonls",
-	"lua_ls",
+	-- "lua_ls",
+	-- python 
 	"pyright",
 }
 
@@ -51,19 +53,24 @@ settings["lsp"] = {
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins
 settings["null_ls"] = {
 	-- formatting
+	-- The uncompromising Python code formatter
 	"black",
 	"clang_format",
 	"eslint_d",
-	"jq",
+	-- Command-line JSON processor
+	-- "jq",
 	"markdownlint",
+	-- prettier, as a daemon, for ludicrous formatting speed.
 	"prettierd",
-	"rustfmt",
-	"shfmt",
-	"stylua",
-
+	-- A tool for formatting rust code according to style guidelines.
+	-- "rustfmt",
+	-- A shell parser, formatter, and interpreter with bash support.
+	-- "shfmt",
+	-- An opinionated code formatter for Lua.
+	-- "stylua",
 	-- diagnostics
-	"shellcheck",
-	-- "markdownlint",
+	-- A shell script static analysis tool.
+	-- "shellcheck",
 }
 
 return settings

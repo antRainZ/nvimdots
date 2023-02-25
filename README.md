@@ -1,197 +1,98 @@
-<h1 align="center">
-    nvimdots
-    <br>
-    <a href="https://github.com/neovim/neovim/releases/tag/stable">
-    <img
-        alt="NeoVim Version Capability"
-        src="https://img.shields.io/badge/Supports%20Nvim-v0.8-A6D895?style=for-the-badge&colorA=363A4F&logo=neovim&logoColor=D9E0EE">
-    </a>
-    <a href="https://github.com/ayamir/nvimdots/releases">
-    <img
-        alt="Release"
-        src="https://img.shields.io/github/v/release/ayamir/nvimdots.svg?style=for-the-badge&logo=github&color=F2CDCD&logoColor=D9E0EE&labelColor=363A4F">
-    </a>
-</h1>
-
-<p align="center">
-    <a href="https://github.com/ayamir/nvimdots/stargazers">
-    <img
-        alt="Stars"
-        src="https://img.shields.io/github/stars/ayamir/nvimdots?colorA=363A4F&colorB=B7BDF8&logo=adafruit&logoColor=D9E0EE&style=for-the-badge">
-    </a>
-    <a href="https://github.com/ayamir/nvimdots/issues">
-    <img
-        alt="Issues"
-        src="https://img.shields.io/github/issues-raw/ayamir/nvimdots?colorA=363A4f&colorB=F5A97F&logo=github&logoColor=D9E0EE&style=for-the-badge">
-    </a>
-    <a href="https://github.com/ayamir/nvimdots/contributors">
-    <img
-        alt="Contributors"
-        src="https://img.shields.io/github/contributors/ayamir/nvimdots?colorA=363A4F&colorB=B5E8E0&logo=git&logoColor=D9E0EE&style=for-the-badge">
-    </a>
-    <img
-        alt="Code Size"
-        src="https://img.shields.io/github/languages/code-size/ayamir/nvimdots?colorA=363A4F&colorB=DDB6F2&logo=gitlfs&logoColor=D9E0EE&style=for-the-badge">
-</p>
-
-## 🪷 Introduction
-
-This repo hosts my [NeoVim](https://neovim.io/) configuration for Linux, macOS, and Windows. `init.lua` is the config entry point.
-
-It contains two branches:
-
-<div align="center">
-
-| Branch |    Completion Solution     |
-| :----: | :------------------------: |
-|  main  | config for nvim 0.8 stable |
-|  0.7   | config for nvim 0.7 stable |
-
-</div>
-
+# 简介
+fork [A well configured and structured Neovim.](https://github.com/ayamir/nvimdots)
+`init.lua` is the config entry point.
 I use [lazy.nvim](https://github.com/folke/lazy.nvim) to manage plugins.
-
 Chinese introduction is [here](https://zhuanlan.zhihu.com/p/382092667).
 
-### 🎐 Features
-
+Features:
 - **Fast.** Less than **30ms** to start (Depends on SSD and CPU, tested on Zephyrus G14 2022 version).
 - **Simple.** Run out of the box.
 - **Modern.** Pure `lua` config.
 - **Modular.** Easy to customize.
 - **Powerful.** Full functionality to code.
 
-## 🏗 How to Install
-
-Just run the following interactive bootstrap command, and you're good to go 👍
-
-- **Windows** _(Note: This script REQUIRES `pwsh` > `v7.1`)_
-
-```pwsh
-Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/ayamir/nvimdots/HEAD/scripts/install.ps1'))
-```
-
-- **\*nix**
-
+ubuntu 20.04 安装记录
 ```sh
-if command -v curl >/dev/null 2>&1; then
-    bash -c "$(curl -fsSL https://raw.githubusercontent.com/ayamir/nvimdots/HEAD/scripts/install.sh)"
-else
-    bash -c "$(wget -O- https://raw.githubusercontent.com/ayamir/nvimdots/HEAD/scripts/install.sh)"
-fi
+# https://github.com/neovim/neovim/releases/tag/stable 先下载最新版本
+# wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb
+sudo apt install ./nvim-linux64.deb
+
+# 先查看需要安装的版本
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - &&\
+sudo apt-get install -y nodejs
+
+# 默认仓库换成在国内的镜像
+npm config set registry https://registry.npm.taobao.org
+sudo npm install -g neovim
+sudo npm install -g yarn
+
+# 安装 Python3 环境
+sudo apt install  -y  python3 python3-pip
+python3 -m pip install --user --upgrade pynvim
+
+# 插件使用依赖
+sudo apt install -y ripgrep lldb unzip
+sudo apt install -y libsqlite3-dev
+
+# zoxide fd nerd-fonts-jetbrains-mono 没有
+# mason install clang-format required
+sudo apt install -y python3-venv
+
+
+# 安装前先配置好github 的ssh 秘钥
+bash -c "$(wget -O- https://raw.githubusercontent.com/ayamir/nvimdots/HEAD/scripts/install.sh)"
 ```
 
-It's strongly recommended to read [Wiki: Prerequisites](https://github.com/ayamir/nvimdots/wiki/Prerequisites) before starting, especially for \*nix users.
+[Wiki: Prerequisites](https://github.com/ayamir/nvimdots/wiki/Prerequisites) 记录：
+```sh
+# lazygit required by tui git operations
+# ripgrep required by telescope word search engine
+# zoxide required by telescope-zoxide
+# sqlite required by telescope-frecency
+# fd required by telescope file search engine
+# yarn required by markdown preview
+# nerd-fonts-jetbrains-mono required by devicons and neovide font
+# lldb for lldb-vscode required by debug c/cpp/rust program
+# nvm for node version manager
+# make required by fzf
+# unzip required by mason
+# neovim version >= 0.7
+```
 
-## ⚙️ Configuration & Usage
+## 问题
+`:checkhealth`，检查问题
+[常见问题解决方案](https://github.com/ayamir/nvimdots/wiki/Issues)
 
-<h3 align="center">
-    🗺️ Keybindings
-</h3>
-<p align="center">Refer to <a href="https://github.com/ayamir/nvimdots/wiki/Keybindings" rel="nofollow">Wiki: Keybindings</a></p>
-<br>
+# 使用
+使用telescope打开文件开始编辑，默认的`<leader>`键为空格
+测试启动时间：[rhysd/vim-startuptime](https://github.com/rhysd/vim-startuptime)
 
-<h3 align="center">
-    🔌 Plugins & Deps
-</h3>
-<p align="center">Refer to <a href="https://github.com/ayamir/nvimdots/wiki/Plugins" rel="nofollow">Wiki: Plugins</a> <br><em>(You can also find a deps diagram there!)</em></p>
-<br>
+## 搜索
+搜索功能基于[ripgrep](https://github.com/BurntSushi/ripgrep/blob/master/GUIDE.md)，并支持其命令行的参数
 
-<h3 align="center">
-    🔧 Usage & Customization
-</h3>
-<p align="center">Refer to <a href="https://github.com/ayamir/nvimdots/wiki/Usage" rel="nofollow">Wiki: Usage</a></p>
-<br>
++ 怎么在当前项目目录下全局搜索某个符号
+  + 当前的项目路径会在`lualine`中实时显示
+  + 快捷键`<leader> fw` 搜索符号
 
-<h3 align="center">
-    🤔 FAQ
-</h3>
-<p align="center">Refer to <a href="https://github.com/ayamir/nvimdots/wiki/Issues" rel="nofollow">Wiki: FAQ</a></p>
+## lsp
+`<leader>li>`可以打开LspInfo窗口
 
-## ✨ Features
+# Keybindings
+[参考](https://github.com/ayamir/nvimdots/wiki/Keybindings)
 
-<h3 align="center">
-    ⏱️  Startup Time
-</h3>
+# 插件
+[插件查看](https://github.com/ayamir/nvimdots/wiki/Plugins)
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/ayamir/blog-imgs/main/startuptime.png"
-  width = "80%"
-  alt = "StartupTime"
-  />
-</p>
+## 插件更新
+<leader>ps 同步所有插件
+插件实际的安装路径在 `~/.local/share/nvim/site/lazy`
+出现问题，那就在Sync之后将光标移动到安装失败那一行，按下回车看看相应的错误日志，根据日志查看[issue](https://github.com/ayamir/nvimdots/issues)
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/ayamir/blog-imgs/main/vimstartup.png"
-  width = "60%"
-  alt = "Vim-StartupTime"
-  />
-</p>
+# snippets
+copy `friendly-snippets's` `package.json` to `snips` directory
 
-> Tested with [rhysd/vim-startuptime](https://github.com/rhysd/vim-startuptime)
-
-<h3 align="center">
-    📸 Screenshots
-</h3>
-
-<p align="center">
-    <img src="https://raw.githubusercontent.com/ayamir/blog-imgs/main/dashboard.png" alt="Dashboard">
-    <em>Dashboard</em>
-</p>
-<br>
-
-<p align="center">
-    <img src="https://raw.githubusercontent.com/ayamir/blog-imgs/main/telescope.png" alt="Telescope">
-    <em>Telescope</em>
-</p>
-<br>
-
-<p align="center">
-    <img src="https://raw.githubusercontent.com/ayamir/blog-imgs/main/coding.png" alt="Coding">
-    <em>Coding</em>
-</p>
-<br>
-
-<p align="center">
-    <img src="https://raw.githubusercontent.com/ayamir/blog-imgs/main/dap.png" alt="Debugging">
-    <em>Debugging</em>
-</p>
-<br>
-
-<p align="center">
-    <img src="https://raw.githubusercontent.com/ayamir/blog-imgs/main/gitui.png" alt="Lazygit">
-    <em>Lazygit with built-in Terminal</em>
-</p>
-<br>
-
-<p align="center">
-    <img src="https://raw.githubusercontent.com/ayamir/blog-imgs/main/legendary.png" alt="Legendary">
-    <em>Command quickref</em>
-</p>
-
-## 👐 Contributing
-
-- If you find anything that needs improving, do not hesitate to point it out or create a PR.
-- If you come across an issue, you can first use `:checkhealth` command provided by nvim to trouble-shoot yourself.
-  - If you still have such problems, feel free to open a new issue!
-
-## ❤️ Thanks to
-
+# ❤️ Thanks to
 - [ayamir](https://github.com/ayamir)
 - [Jint-lzxy](https://github.com/Jint-lzxy)
 - [CharlesChiuGit](https://github.com/CharlesChiuGit)
-
-## 🎉 Acknowledgement
-
 - [glepnir/nvim](https://github.com/glepnir/nvim)
-
-## 📜 License
-
-This NeoVim configuration is released under the MIT license, which grants the following permissions:
-
-- Commercial use
-- Distribution
-- Modification
-- Private use
-
-For more convoluted language, see the [LICENSE](https://github.com/ayamir/nvimdots/blob/main/LICENSE).

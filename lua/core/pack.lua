@@ -27,6 +27,7 @@ function Lazy:load_plugins()
 			.. string.format(";%s;%s", modules_dir .. "/configs/?.lua", modules_dir .. "/configs/?/init.lua")
 	end
 
+	-- 获取插件列表
 	local get_plugins_list = function()
 		local list = {}
 		local plugins_list = vim.split(fn.glob(modules_dir .. "/plugins/*.lua"), "\n")
