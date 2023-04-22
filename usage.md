@@ -133,7 +133,7 @@ _(If you need help, feel free to open an issue.)_
 All of modified config will have effect after you restart `nvim`.
 
 ## Global assets
-### Palette
+### Palette 调色板
 This configuration provides a global unified palette. You may use `require("modules.utils").get_palette({ <color_name> = <hex_value> }?)` to get the global color palette. Specific colors may be overwritten in [`settings.lua`](https://github.com/ayamir/nvimdots/blob/6d814aad5455aa8d248ed6af7b56fc4e99e40f48/lua/core/settings.lua#L18-L23) or passing in as a function parameter. You will be prompted when using this function.
 
 The order of priority for modifying the palette is:
