@@ -5,5 +5,11 @@ LSP Servers 都是一个个命令行程序，由编辑器（也就是客户端�
 
 [查询LSP 服务端](https://langserver.org/)
 
-# clangd
-[](https://clangd.llvm.org/)
+# 快捷键
+`K`: 光标放在方法上，显示文档
+`gd`: 预览函数定义
+`gD`: 跳转到函数定义
+`gh`: 查看函数引用情况
+`gr`: 修改函数名
+`ga`: 执行code action
+`go`: 打开基于lsp的outline
